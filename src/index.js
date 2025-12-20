@@ -5,6 +5,8 @@ const morgan = require('morgan');
 const connectDB = require('./config/db');
 const authRoutes = require('./routes/authRoutes');
 const hotelRoutes = require('./routes/hotelRoutes');
+const bookingRoutes = require('./routes/bookingRoutes');
+const voucherRoutes = require('./routes/voucherRoutes');
 
 const app = express();
 const PORT = process.env.PORT || 5000;
@@ -33,6 +35,8 @@ app.get('/', (req, res) => {
 // Routes
 app.use('/user', authRoutes); // /user/login, /user/register, /user/forgot-password
 app.use('/hotels', hotelRoutes); // /hotels/search
+app.use('/bookings', bookingRoutes);
+app.use('/vouchers', voucherRoutes);
 
 // Global error handler (simple)
 app.use((err, req, res, next) => {
